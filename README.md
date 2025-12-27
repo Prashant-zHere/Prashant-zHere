@@ -35,6 +35,6 @@ I’m constantly learning, experimenting with new ideas, and improving my skills
 
 ###
 
-<p align="center">
-  git commit -m "progress" ⌨️
-</p>
+<h2 align="center">
+  git commit -am "progress" ⌨️
+</h2>
