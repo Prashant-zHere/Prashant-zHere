@@ -45,8 +45,7 @@ I love learning new technologies, building projects, and turning ideas into func
 </div>
 
 ---
-
-## 📊 GitHub Activity
+<br>
 
 <div align="center">
   <!-- Pacman Contribution Graph -->
