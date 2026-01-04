@@ -100,5 +100,5 @@ I focus on **strong fundamentals**, **consistent practice**, and **hands-on proj
 ---
 
 <h2 align="center">
-  git commit -m "Works on my machine" ⌨️
+  git commit -m "But it works on my machine" ⌨️
 </h2>
