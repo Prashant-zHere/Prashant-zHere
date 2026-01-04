@@ -491,25 +491,23 @@ function openTerminal() {
         content: `
             <div class="terminal-content">
                 <div class="terminal-line">
-                    <span class="terminal-prompt">visitor@portfolio:~$</span>
+                    <span class="terminal-prompt">Prashant@portfolio:~$</span>
                     <span class="terminal-command"> whoami</span>
                 </div>
                 <div class="terminal-line terminal-output">${portfolioData.user_name}</div>
                 
                 <div class="terminal-line">
-                    <span class="terminal-prompt">visitor@portfolio:~$</span>
-                    <span class="terminal-command"> cat skills.txt</span>
+                    <span class="terminal-prompt">Prashant@portfolio:~$</span>
+                    <span class="terminal-command">cat skills.txt</span>
                 </div>
                 <div class="terminal-line terminal-output">
-                    Languages: Python, JavaScript, TypeScript, SQL<br>
-                    Frontend: React, Vue.js, HTML5, CSS3<br>
-                    Backend: Flask, Django, Node.js, Express<br>
-                    Database: PostgreSQL, MongoDB, Redis<br>
-                    Tools: Git, Docker, AWS, Linux
+                    Languages: HTML5, CSS, Javascript, C/C++, Java, Python, PHP <br>
+                    Database: MySQL<br>
+                    Tools: Git, Github, Docker, GitHub Actions
                 </div>
                 
                 <div class="terminal-line">
-                    <span class="terminal-prompt">visitor@portfolio:~$</span>
+                    <span class="terminal-prompt">Prashant@portfolio:~$</span>
                     <span class="terminal-command"> cat contact.txt</span>
                 </div>
                 <div class="terminal-line terminal-output">
@@ -519,13 +517,13 @@ function openTerminal() {
                 </div>
                 
                 <div class="terminal-line">
-                    <span class="terminal-prompt">visitor@portfolio:~$</span>
+                    <span class="terminal-prompt">Prashant@portfolio:~$</span>
                     <span class="terminal-command"> echo "Thanks for visiting!"</span>
                 </div>
                 <div class="terminal-line terminal-output">Thanks for visiting!</div>
                 
                 <div class="terminal-line terminal-input-line">
-                    <span class="terminal-prompt">visitor@portfolio:~$</span>
+                    <span class="terminal-prompt">Prashant@portfolio:~$</span>
                     <input type="text" class="terminal-input" placeholder=" Type a command...">
                     <span class="cursor-blink">|</span>
                 </div>
@@ -552,7 +550,7 @@ function handleTerminalInput(e) {
         // Remove input line
         const inputLine = input.closest('.terminal-input-line');
         inputLine.innerHTML = `
-            <span class="terminal-prompt">visitor@portfolio:~$</span>
+            <span class="terminal-prompt">Prashant@portfolio:~$</span>
             <span class="terminal-command"> ${input.value}</span>
         `;
         inputLine.classList.remove('terminal-input-line');
@@ -598,7 +596,7 @@ function handleTerminalInput(e) {
         const newInputLine = document.createElement('div');
         newInputLine.className = 'terminal-line terminal-input-line';
         newInputLine.innerHTML = `
-            <span class="terminal-prompt">visitor@portfolio:~$</span>
+            <span class="terminal-prompt">Prashant@portfolio:~$</span>
             <input type="text" class="terminal-input" placeholder="">
             <span class="cursor-blink">|</span>
         `;

@@ -43,8 +43,8 @@
       "action": "open_link",
       "url": "https://leetcode.com/u/Prashant_here",
       "position": {
-        "x": 118,
-        "y": 194
+        "x": 13,
+        "y": 299
       }
     },
     {
@@ -55,8 +55,8 @@
       "action": "open_email",
       "email": "zedd.prashant@gmail.com",
       "position": {
-        "x": 23,
-        "y": 297
+        "x": 19,
+        "y": 425
       }
     },
     {
@@ -66,8 +66,8 @@
       "icon": "folder",
       "action": "open_folder",
       "position": {
-        "x": 21,
-        "y": 415
+        "x": 126,
+        "y": 108
       },
       "contents": [
         {
@@ -156,8 +156,8 @@
       "action": "open_text",
       "content": "Hello! I'm a passionate Full-Stack Developer...",
       "position": {
-        "x": 20,
-        "y": 520
+        "x": 13,
+        "y": 521
       }
     },
     {
@@ -167,8 +167,8 @@
       "icon": "folder",
       "action": "open_folder",
       "position": {
-        "x": 117,
-        "y": -28
+        "x": 127,
+        "y": -20
       },
       "contents": [
         {
@@ -220,12 +220,12 @@
       "icon": "terminal",
       "action": "open_terminal",
       "position": {
-        "x": 114,
-        "y": 93
+        "x": 127,
+        "y": 212
       }
     }
   ],
-  "theme": "macos",
+  "theme": "windows",
   "wallpaper": "/static/images/wallpaper.jpg",
   "user_name": "Prashant Sharma",
   "user_title": "Software Developer"
