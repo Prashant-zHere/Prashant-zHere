@@ -24,7 +24,6 @@ I enjoy learning how systems work, writing clean logic, and building small but c
 
 I focus on **strong fundamentals**, **consistent practice**, and **hands-on projects**.
 
- 🔹 Building web applications using **Flask, PHP, and JavaScript**  
  🔹 Practicing **DSA & algorithmic problem-solving** (C / C++)  
  🔹 Working with databases and backend workflows  
  🔹 Learning deployment and containerization with Docker  
