@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ data.user_name }} | Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="{{ data.theme }}-theme" data-theme="{{ data.theme }}">
+    
+    <!-- Boot Screen -->
+    <div id="boot-screen" class="boot-screen">
+        <div class="boot-content">
+            <div class="boot-logo">
+                <i class="fab fa-windows windows-logo"></i>
+                <i class="fab fa-apple macos-logo"></i>
+            </div>
+            <div class="boot-loader">
+                <div class="loader-dots">
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+            <p class="boot-text">Loading Portfolio...</p>
+        </div>
+    </div>
+
+    <!-- Lock Screen -->
+    <div id="lock-screen" class="lock-screen hidden">
+        <div class="lock-time" id="lock-time">12:00</div>
+        <div class="lock-date" id="lock-date">Monday, January 1</div>
+        <div class="lock-user">
+            <div class="user-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <p class="user-name">{{ data.user_name }}</p>
+            <button class="unlock-btn" onclick="unlockScreen()">
+                <i class="fas fa-arrow-right"></i> Click to Enter
+            </button>
+        </div>
+    </div>
+
+    <!-- Desktop -->
+    <div id="desktop" class="desktop hidden">
+        <!-- Wallpaper -->
+        <div class="wallpaper" style="background-image: url('{{ data.wallpaper }}');"></div>
+        
+        <!-- Desktop Icons Container -->
+        <div id="desktop-icons" class="desktop-icons">
+            {% for item in data.desktop_items %}
+            <div class="desktop-icon" 
+                 data-id="{{ item.id }}" 
+                 data-type="{{ item.type }}"
+                 data-action="{{ item.action }}"
+                 {% if item.url %}data-url="{{ item.url }}"{% endif %}
+                 {% if item.email %}data-email="{{ item.email }}"{% endif %}
+                 style="left: {{ item.position.x }}px; top: {{ item.position.y }}px;"
+                 draggable="true">
+                <div class="icon-image">
+                    {% if item.icon == 'folder' %}
+                        <i class="fas fa-folder"></i>
+                    {% elif item.icon == 'pdf' %}
+                        <i class="fas fa-file-pdf"></i>
+                    {% elif item.icon == 'github' %}
+                        <i class="fab fa-github"></i>
+                    {% elif item.icon == 'linkedin' %}
+                        <i class="fab fa-linkedin"></i>
+                    {% elif item.icon == 'email' %}
+                        <i class="fas fa-envelope"></i>
+                    {% elif item.icon == 'text' %}
+                        <i class="fas fa-file-alt"></i>
+                    {% elif item.icon == 'leetcode' %}
+                        <i class="fa-solid fa-code"></i>
+                    {% elif item.icon == 'terminal' %}
+                        <i class="fas fa-terminal"></i>
+                    {% else %}
+                        <i class="fas fa-file"></i>
+                    {% endif %}
+                </div>
+                <span class="icon-name">{{ item.name }}</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Windows Container (for open windows) -->
+        <div id="windows-container" class="windows-container"></div>
+
+        <!-- Context Menu -->
+        <div id="context-menu" class="context-menu hidden">
+            <div class="menu-item" onclick="createNewFile()">
+                <i class="fas fa-file-alt"></i> New File
+            </div>
+            <div class="menu-item" onclick="createNewFolder()">
+                <i class="fas fa-folder-plus"></i> New Folder
+            </div>
+            <div class="menu-divider"></div>
+            <div class="menu-item" onclick="refreshDesktop()">
+                <i class="fas fa-sync-alt"></i> Refresh
+            </div>
+            <div class="menu-item" onclick="toggleTheme()">
+                <i class="fas fa-palette"></i> Switch Theme
+            </div>
+            <div class="menu-divider"></div>
+            <div class="menu-item" onclick="openSettings()">
+                <i class="fas fa-cog"></i> Display Settings
+            </div>
+        </div>
+
+        <!-- Taskbar (Windows) / Dock (macOS) -->
+        <div id="taskbar" class="taskbar">
+            <!-- Windows Start Button -->
+            <div class="start-button" onclick="toggleStartMenu()">
+                <i class="fab fa-windows"></i>
+            </div>
+            
+            <!-- Dock Items (for both themes) -->
+            <div class="taskbar-items">
+                <div class="taskbar-item" onclick="openFinder()" title="Finder">
+                    <i class="fas fa-th-large"></i>
+                </div>
+                <div class="taskbar-item" onclick="openAbout()" title="About Me">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="taskbar-item" onclick="openProjectsFolder()" title="Projects">
+                    <i class="fas fa-folder"></i>
+                </div>
+                <div class="taskbar-item" onclick="openTerminal()" title="Terminal">
+                    <i class="fas fa-terminal"></i>
+                </div>
+                <div class="taskbar-item" onclick="openSettings()" title="Settings">
+                    <i class="fas fa-cog"></i>
+                </div>
+            </div>
+
+            <!-- Open Windows -->
+            <div id="taskbar-windows" class="taskbar-windows"></div>
+
+            <!-- System Tray -->
+            <div class="system-tray">
+                <div class="tray-item" onclick="toggleTheme()" title="Switch Theme">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="tray-item">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <div class="tray-item">
+                    <i class="fas fa-volume-up"></i>
+                </div>
+                <div class="tray-item">
+                    <i class="fas fa-battery-three-quarters"></i>
+                </div>
+                <div class="tray-time">
+                    <span id="taskbar-time">12:00 PM</span>
+                    <span id="taskbar-date">1/1/2024</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- macOS Menu Bar -->
+        <div id="menubar" class="menubar">
+            <div class="menubar-left">
+                <div class="apple-menu" onclick="toggleAppleMenu()">
+                    <i class="fab fa-apple"></i>
+                </div>
+                <span class="app-name">Finder</span>
+                <span class="menu-text">File</span>
+                <span class="menu-text">Edit</span>
+                <span class="menu-text">View</span>
+                <span class="menu-text">Go</span>
+                <span class="menu-text">Window</span>
+                <span class="menu-text">Help</span>
+            </div>
+            <div class="menubar-right">
+                <div class="menubar-item" onclick="toggleTheme()">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="menubar-item">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <div class="menubar-item">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="menubar-item">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="menubar-time">
+                    <span id="menubar-time">Mon Jan 1 12:00 PM</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Menu -->
+        <div id="start-menu" class="start-menu hidden">
+            <div class="start-header">
+                <div class="start-user">
+                    <div class="user-avatar-small">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span>{{ data.user_name }}</span>
+                </div>
+                <input type="text" class="start-search" placeholder="Type here to search">
+            </div>
+            <div class="start-content">
+                <div class="start-section">
+                    <h4>Pinned</h4>
+                    <div class="pinned-apps">
+                        <div class="pinned-app" onclick="openAbout()">
+                            <i class="fas fa-user"></i>
+                            <span>About</span>
+                        </div>
+                        <div class="pinned-app" onclick="openProjectsFolder()">
+                            <i class="fas fa-folder"></i>
+                            <span>Projects</span>
+                        </div>
+                        <div class="pinned-app" onclick="openSkills()">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Skills</span>
+                        </div>
+                        <div class="pinned-app" onclick="openResume()">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>Resume</span>
+                        </div>
+                        <div class="pinned-app" onclick="openGitHub()">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </div>
+                        <div class="pinned-app" onclick="openLinkedIn()">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </div>
+                        <div class="pinned-app" onclick="openTerminal()">
+                            <i class="fas fa-terminal"></i>
+                            <span>Terminal</span>
+                        </div>
+                        <div class="pinned-app" onclick="openSettings()">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="start-footer">
+                <div class="start-power" onclick="showShutdown()">
+                    <i class="fas fa-power-off"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Apple Menu Dropdown -->
+        <div id="apple-menu-dropdown" class="apple-menu-dropdown hidden">
+            <div class="dropdown-item" onclick="openAbout()">About This Portfolio</div>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-item" onclick="openSettings()">System Preferences...</div>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-item" onclick="showShutdown()">Shut Down...</div>
+        </div>
+    </div>
+
+    <!-- Window Templates (Hidden) -->
+    <template id="window-template">
+        <div class="window" data-window-id="">
+            <div class="window-titlebar">
+                <div class="window-controls">
+                    <button class="control-btn close" onclick="closeWindow(this)"></button>
+                    <button class="control-btn minimize" onclick="minimizeWindow(this)"></button>
+                    <button class="control-btn maximize" onclick="maximizeWindow(this)"></button>
+                </div>
+                <div class="window-title">Window Title</div>
+                <div class="window-controls-right"></div>
+            </div>
+            <div class="window-content"></div>
+        </div>
+    </template>
+
+    <!-- Store data for JavaScript -->
+    <script>
+        const portfolioData = {{ data | tojson | safe }};
+    </script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
