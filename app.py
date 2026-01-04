@@ -323,7 +323,7 @@ def toggle_theme():
 @app.route('/resume')
 def get_resume():
     """Serve the resume PDF"""
-    resume_path = os.path.join(app.static_folder, 'resume.pdf')
+    resume_path = os.path.join(app.static_folder, 'Resume.pdf')
     if os.path.exists(resume_path):
         return send_file(resume_path)
     return "Resume not found", 404
