@@ -102,7 +102,7 @@ def load_desktop_data():
           "id": "project2",
           "name": "Campus Voice",
           "type": "project",
-          "image": "/static/images/projects/project2.png",
+          "image": "/static/images/projects/project2.jpg",
           "description": "CampusVoice is a complaint and suggestion management system for colleges. It Bridges the gap between students and college admins. Students can submit complaint and suggestion with files with keeping there identity secret.",
           "url": "https://github.com/Prashant-zHere/Campus_Voice",
           "tech": [
@@ -146,7 +146,7 @@ def load_desktop_data():
           "id": "project5",
           "name": "VoteWise",
           "type": "project",
-          "image": "/static/images/projects/project3.png",
+          "image": "/static/images/projects/project5.png",
           "description": "🗳️ Online Student Voting System. A web-based system for schools and colleges to conduct secure and easy online student elections 🚀🔐",
           "url": "https://github.com/Prashant-zHere/Memory_Defragmentation_DSA-C",
           "tech": [

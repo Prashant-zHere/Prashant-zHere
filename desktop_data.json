@@ -90,7 +90,7 @@
           "id": "project2",
           "name": "Campus Voice",
           "type": "project",
-          "image": "/static/images/projects/project2.png",
+          "image": "/static/images/projects/project2.jpg",
           "description": "CampusVoice is a complaint and suggestion management system for colleges. It Bridges the gap between students and college admins. Students can submit complaint and suggestion with files with keeping there identity secret.",
           "url": "https://github.com/Prashant-zHere/Campus_Voice",
           "tech": [
@@ -120,7 +120,7 @@
           "name": "HomeCare Connect",
           "type": "project",
           "image": "/static/images/projects/project4.png",
-          "description": "Connecting Care. Empowering Homes | 🏠 HomeCare Connect connects homeowners with trusted service providers 🔧, offering easy booking 📅 and service management in one simple platform.",
+          "description": "Connecting Care. Empowering Homes | \ud83c\udfe0 HomeCare Connect connects homeowners with trusted service providers \ud83d\udd27, offering easy booking \ud83d\udcc5 and service management in one simple platform.",
           "url": "https://github.com/Prashant-zHere/HomeCare_Connect",
           "tech": [
             "PHP",
@@ -134,8 +134,8 @@
           "id": "project5",
           "name": "VoteWise",
           "type": "project",
-          "image": "/static/images/projects/project3.png",
-          "description": "🗳️ Online Student Voting System. A web-based system for schools and colleges to conduct secure and easy online student elections 🚀🔐",
+          "image": "/static/images/projects/project5.png",
+          "description": "\ud83d\uddf3\ufe0f Online Student Voting System. A web-based system for schools and colleges to conduct secure and easy online student elections \ud83d\ude80\ud83d\udd10",
           "url": "https://github.com/Prashant-zHere/Memory_Defragmentation_DSA-C",
           "tech": [
             "PHP",
@@ -204,7 +204,7 @@
           "level": 80
         },
         {
-          "name": "Git / GitHub",
+          "name": "Git / Github",
           "level": 85
         },
         {
@@ -225,9 +225,8 @@
       }
     }
   ],
-  "theme": "windows",
+  "theme": "macos",
   "wallpaper": "/static/images/wallpaper.jpg",
   "user_name": "Prashant Sharma",
   "user_title": "Software Developer"
 }
-    
